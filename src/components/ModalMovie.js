@@ -3,14 +3,20 @@ import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Image from 'react-bootstrap/Image';
+import { Card } from "react-bootstrap";
 function ModalMovie(props) {
+    const [comment, setComment] = useState('');
     
     const posterPathURL = "http://image.tmdb.org/t/p/w500/"
     
     const addToDB =()=>{
         const serverURL = `http://localhost:3000/getmove`
-       axios.post(serverURL , props.data)
-       console.log(props.data)
+        const moveData ={
+            ...props.data,
+            comment:comment,
+        }
+       axios.post(serverURL , moveData)
+    
 
     }
 
@@ -23,8 +29,10 @@ function ModalMovie(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <Image src={posterPathURL+props.clickedItem.poster_path} width="100%"></Image>
-                    {props.clickedItem.release_date}
-                  <input type="text"/>
+                    <Card.Text>{props.clickedItem.release_date}</Card.Text>
+                    <Card.Text>{props.clickedItem.overview}</Card.Text>
+                    <Card.Text>  <input type="text" placeholder="add your comment" name="comment" value={comment} onChange={e=>setComment(e.target.value)} /></Card.Text>
+                  
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary"  onClick={props.handelclose} >

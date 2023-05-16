@@ -9,6 +9,7 @@ function Movie(props) {
     const [showFlag,setShowFlag] = useState(false)
     
 
+
     const handelshow =() => {
        setShowFlag(true)
        setclickedItem(props.data)
@@ -27,6 +28,9 @@ function Movie(props) {
                     <Card.Title>{props.data.title}</Card.Title>
                     <Card.Text>
                         {props.data.overview}
+                    </Card.Text>
+                    <Card.Text>
+                        {props.data.release_date}
                     </Card.Text>
                     <Button variant="primary" onClick={()=>{handelshow(props.data)} }>add to favorite</Button>
                 </Card.Body>
