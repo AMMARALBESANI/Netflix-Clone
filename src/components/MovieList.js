@@ -5,10 +5,13 @@ function MovieList(props){
         <>
           {props.trendMovie.map(item => {
                 return (
-                   <>
-                  <Movie data={item}  /> 
                   
-                   </> 
+                   <div key ={item.id}>
+                   <Movie data={item}  /> 
+                   </div>
+                  
+                  
+                 
                 )
             })}
         </>
