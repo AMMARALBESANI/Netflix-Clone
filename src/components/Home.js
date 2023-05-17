@@ -6,7 +6,7 @@ function Home() {
     const [trendMovie, setTrendMovie] = useState([])
 
         const getTrending = () => {
-        const serverURL = `http://localhost:3000/trending`
+        const serverURL = `${process.env.REACT_APP_serverURL}/trending`
         fetch(serverURL)
             .then(response => {
 
@@ -26,10 +26,14 @@ function Home() {
     },[])
 
     return (
-        <>
-         
-            <MovieList trendMovie={trendMovie}/>
-        </>
+       
+        <div style ={{display:"flex",flexWrap:"wrap",
+        margin:"10px"}}>
+              <MovieList trendMovie={trendMovie}/>
+        </div>
+        
+          
+        
     )
 }
 

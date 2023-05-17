@@ -10,12 +10,15 @@ function ModalMovie(props) {
     const posterPathURL = "http://image.tmdb.org/t/p/w500/"
     
     const addToDB =()=>{
-        const serverURL = `http://localhost:3000/getmove`
+       
+        const serverURL = `${process.env.REACT_APP_serverURL}/getmove`
         const moveData ={
             ...props.data,
             comment:comment,
         }
-       axios.post(serverURL , moveData)
+       axios.post(serverURL , moveData).then(()=>{
+        props.handelclose()
+       })
     
 
     }
