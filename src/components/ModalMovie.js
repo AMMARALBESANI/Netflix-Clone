@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Image from 'react-bootstrap/Image';
 import { Card } from "react-bootstrap";
+
+
 function ModalMovie(props) {
     const [comment, setComment] = useState('');
     

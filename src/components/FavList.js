@@ -11,7 +11,7 @@ function FaveList() {
     const [clickedItem, setclickedItem] = useState({});
     const [updateFlag, setUpdateFlg] = useState(false);
     const [updatedData, setUpdatedData] = useState([])
-    
+
     const showUpdateModel = (item) => {
         setUpdateFlg(true)
         setclickedItem(item)
@@ -24,21 +24,21 @@ function FaveList() {
 
 
 
-    
-        const deleteItem = (item) => {
+
+    const deleteItem = (item) => {
         const serverURL = `${process.env.REACT_APP_serverURL}/getmove/${item.id}`
-         axios.delete(serverURL)
-          .then(data=>{
-            const serverURL = `${process.env.REACT_APP_serverURL}/getmove`
-            axios.get( serverURL)
-            .then(data=>{
-                 setUpdatedData(data.data)
-               
-                
+        axios.delete(serverURL)
+            .then(data => {
+                const serverURL = `${process.env.REACT_APP_serverURL}/getmove`
+                axios.get(serverURL)
+                    .then(data => {
+                        setUpdatedData(data.data)
+
+
+                    })
             })
-          })  
-    
-}
+
+    }
 
     const Renfave = () => {
         const serverURL = `${process.env.REACT_APP_serverURL}/getmove`
@@ -47,7 +47,7 @@ function FaveList() {
                 response.json()
                     .then(data => {
                         setFav(data)
-                        
+
                     })
             })
             .catch(error => {
@@ -63,10 +63,11 @@ function FaveList() {
     }
 
 
-    useEffect(()=>{
+    useEffect(() => {
         setUpdatedData(Fav)
-    },[Fav])
+    }, [Fav])
 
+    
     useEffect(() => {
         Renfave()
     }, [])
