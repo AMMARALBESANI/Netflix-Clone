@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import MovieList from "./MovieList"
+import axios from "axios"
 
 
 function Home() {
@@ -7,14 +8,11 @@ function Home() {
 
         const getTrending = () => {
         const serverURL = `${process.env.REACT_APP_serverURL}/trending`
-        fetch(serverURL)
+        axios.get(serverURL)
             .then(response => {
 
-                response.json().then(data => {
-                  
-                    setTrendMovie(data)
-                    
-                })
+                    setTrendMovie(response.data)
+               
             })
             .catch(error => {
                 console.log(error)

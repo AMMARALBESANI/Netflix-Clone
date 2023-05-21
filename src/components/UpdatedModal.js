@@ -14,23 +14,21 @@ function UpdatedModal(props) {
             title: e.target.title.value,
             poster_path: e.target.poster_path.value,
             comment: e.target.comment.value,
-            release_date:e.target.release_date.value,
-            overview:e.target.overview.value,
+            release_date: e.target.release_date.value,
+            overview: e.target.overview.value,
         }
 
-        const serverURL = `${process.env.REACT_APP_serverURL}/getmove/${props.clickedItem.id}`
+        const serverURL = 
+        `${process.env.REACT_APP_serverURL}/getmove/${props.clickedItem.id}`
 
         const result = await axios.put(serverURL, obj)
-            
-
-
 
         props.closeUpdateModel()
 
         props.takenUbtdatedData(result.data)
     }
 
-   
+
 
     return (
         <>
